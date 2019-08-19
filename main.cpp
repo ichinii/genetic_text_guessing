@@ -14,7 +14,7 @@ using namespace std::chrono_literals;
 
 using gen_t = char;
 static constexpr const gen_t* alphabet = "abcdefghijklmnopqrstuvwxyz #!?()";
-static constexpr const gen_t* goal_dna = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+static constexpr const gen_t* goal_dna = "hello genetic algorithm! are you there? can you hear me? no? ah there you are! hello genetic algorithm!";
 static const size_t dna_size = strlen(goal_dna); // number of gens per dna
 static const size_t pop_size = 512; // number of gens per population
 
@@ -169,13 +169,13 @@ int main(int argc, char** argv)
 			best = index_of_best_gen(pop_fitness);
 
 			if (pop_fitness[best] == dna_size * fitness_factor) {
-				cout << (*front_pop)[best] << " " << count << " :)" << endl;
+				cout << (*front_pop)[best] << " [" << count << "] :)" << endl;
 				if (first_found == 0) {
 					first_found = count;
 					elapsed_found = duration_cast<milliseconds>(clock::now() - then + elapsed);
 				}
 			} else {
-				cout << (*front_pop)[best] << " " << count << endl;
+				cout << (*front_pop)[best] << " [" << count << "]" << endl;
 			}
 
 			// for (size_t i = 0; i < pop_size; i++) {
@@ -226,8 +226,9 @@ int main(int argc, char** argv)
 		cout << "elapsed: " << elapsed.count() << "ms" << endl;
 		if (first_found != 0) {
 			cout << "first found: " << first_found << endl;
-			cout << "elapsed found: " << elapsed_found.count() << "ms" << endl;
+			cout << "elapsed until found: " << elapsed_found.count() << "ms" << endl;
 		}
+		cout << "type any number of iterations (e.g. 100)" << endl;
 		cin >> backlog;
 	}
 }
