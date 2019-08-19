@@ -22,5 +22,7 @@ PseudoTarget("compile", bin)
 PseudoTarget("c", bin)
 
 AddJob("run", "running '"..bin.."'...", "./"..bin)
+PseudoTarget("r", "run")
 AddDependency("run", bin)
-DefaultTarget(bin)
+
+DefaultTarget("c")
